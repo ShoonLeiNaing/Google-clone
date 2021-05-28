@@ -4,14 +4,19 @@ import MicIcon from '@material-ui/icons/Mic'
 import SearchIcon from '@material-ui/icons/Search'
 import {Button} from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
+import { useStateValue } from '../../StateProvider'
 
 export const Search = ({ hideButtons=false}) => {
+    const[{term},dispatch]=useStateValue()
     const[input,setInput]=useState('')
     const history=useHistory()
     const search=(e)=>{
         e.preventDefault()
-        console.log(input)
         history.push('/search')
+        dispatch({
+            type:'SET_SEARCH_TERMS',
+            term:input,
+        })
     }
     return (
         <form className='search'>
