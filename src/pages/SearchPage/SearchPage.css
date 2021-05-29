@@ -51,3 +51,34 @@
     align-items: center;
     margin-right: 20px;
 }
+
+.searchPage__result{
+    margin:40px 0;
+}
+
+.searchPage__results{
+    max-width: 700px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    margin-left: 170px;
+}
+
+.searchPage__resultSmallTitle{
+    margin-bottom: -12px;
+}
+.searchPage__resultSmallTitle a{
+    text-decoration: none;
+    color:#2b2d2f;
+}
+.searchPage__resultTitle{
+    text-decoration: none;
+}
+.searchPage__resultTitle:hover{
+    text-decoration: underline;
+}
+.searchPage__resultTitle h2{
+   margin-bottom: -5px;
+}
+.searchPage__resultSnippet{
+    color: #3a3b3c;
+}

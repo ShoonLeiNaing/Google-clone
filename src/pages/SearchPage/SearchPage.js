@@ -16,9 +16,7 @@ import './SearchPage.css'
 
 function SearchPage() {
     const [{ term }, dispatch] = useStateValue()
-    // const{data} =useGoogleSearch(term);
-
-    const data = Response
+    const{data} =useGoogleSearch(term);
     console.log(data)
     return (
         <div className='searchPage'>
@@ -37,33 +35,33 @@ function SearchPage() {
                                 </Link>
                             </div>
                             <div className='searchPage__option'>
-                            <ImageIcon />
-                                <Link>                 
+                                <ImageIcon />
+                                <Link>
                                     Images
                                 </Link>
                             </div>
                             <div className='searchPage__option'>
-                            <DescriptionIcon />
-                                <Link>                   
+                                <DescriptionIcon />
+                                <Link>
                                     News
                                 </Link>
                             </div>
                             <div className='searchPage__option'>
-                            <LocalOfferIcon />
-                                <Link>                      
+                                <LocalOfferIcon />
+                                <Link>
                                     Shopping
                                 </Link>
                             </div>
-                            
+
                             <div className='searchPage__option'>
-                            <RoomIcon />
-                                <Link>                   
+                                <RoomIcon />
+                                <Link>
                                     Books
                                 </Link>
                             </div>
                             <div className='searchPage__option'>
-                            <MoreVertIcon />
-                                <Link>    
+                                <MoreVertIcon />
+                                <Link>
                                     More
                                 </Link>
                             </div>
@@ -83,14 +81,32 @@ function SearchPage() {
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
-
-                <div className='searchPage__results'>
-                    {term}
-                </div>
-
             </div>
+
+            {term && (
+                <div className='searchPage__results'>
+                    <p>
+                    About {data?.searchInformation.formattedTotalResults} results 
+                    ({data?.searchInformation.formattedSearchTime} seconds) for {term}
+                    </p>
+                    {data?.items.map(item=>(
+                         <div className='searchPage__result'>
+                             <div className='searchPage__resultSmallTitle'>
+                                 <a href={item.link}>{item.displayLink}</a>
+                            </div>
+                             <a className='searchPage__resultTitle' href={item.link}>
+                                <h2>{item.title}</h2>
+                             </a>
+                             <p className='searchPage__resultSnippet'>
+                                {item.snippet}
+                             </p>
+                         </div>
+                    ))}
+                </div>
+            )}
+
+        </div>
     )
 }
 
